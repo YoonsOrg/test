@@ -31,7 +31,7 @@ jobs:
     - name: Set env
       run: |
         chmod +x .github/workflows/${{ env.branchName }}.sh 
-        ./.github/workflows/${{ env.branchName }}.sh ${{ github.event_name }} ${{ github.sha }}
+        ./.github/workflows/${{ env.branchName }}.sh ${{ github.event_name }} ${ branchName } ${{ github.sha }}
 
     - name: Set tag(sha)
       if: github.event_name == 'release'
