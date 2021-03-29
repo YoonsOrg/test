@@ -20,9 +20,9 @@ jobs:
       run: echo "branchName=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
     
     - name: Set env
-      if: env.branchName == 'main'
-      run: echo "envname=staging" >> $GITHUB_ENV | echo "branchName=${envname}" >> $GITHUB_ENV
+      if: env.branchName == 'refs/tags/**'
+      run: echo "envname=production" >> $GITHUB_ENV | echo "branchName=${envname}" >> $GITHUB_ENV
     
     - name: Set env(branch Name)
-      if: env.branchName != 'test'
+      if: env.branchName != 'refs/tags/**'
       run: echo "envname=${branchName}" >> $GITHUB_ENV | echo "branchName=${envname}" >> $GITHUB_ENV
