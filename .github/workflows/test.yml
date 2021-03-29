@@ -15,14 +15,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Show base branch Name
+      run: echo ${{ github.base_ref }}
+
     - name: Get branch name
       shell: bash
       run: echo "branchName=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
     
     - name: Set env
       run: |
-        chmod +x .github/workflows/${{ env.branchName }}.sh ${{ github.event_name }}
-        ./.github/workflows/${{ env.branchName }}.sh
+        chmod +x .github/workflows/${{ github.base_ref }}.sh ${{ github.event_name }}
+        ./.github/workflows/${{ github.base_ref }}.sh
 
     - name: Set tag(sha)
       if: github.event_name == 'release'
