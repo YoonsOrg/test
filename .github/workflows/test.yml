@@ -17,7 +17,7 @@ jobs:
     
     - name: trigger by released
       if: github.event_name == 'release'
-      run: echo "envname=production" >> $GITHUB_EN
+      run: echo "envname=production" >> $GITHUB_ENV
 
     - name: Get branch name
       if: github.event_name != 'release'
