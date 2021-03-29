@@ -34,6 +34,5 @@ jobs:
         ./.github/workflows/${{ env.branchName }}.sh ${{ github.event_name }} $GITHUB_REF ${{ github.sha }}
 
     - name: Set tag(sha)
-      if: github.event_name == 'release'
       run: echo "Hellow" 
 
