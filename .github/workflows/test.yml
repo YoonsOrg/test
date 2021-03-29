@@ -21,10 +21,10 @@ jobs:
     
     - name: Set env
       run: |
-        chmod +x .github/workflows/${{ env.branchName }}.sh
+        chmod +x .github/workflows/${{ env.branchName }}.sh ${{ github.event_name }}
         ./.github/workflows/${{ env.branchName }}.sh
 
     - name: Set tag(sha)
-      if: github.event_name != 'release'
+      if: github.event_name == 'release'
       run: echo "Hellow" 
 
