@@ -1,0 +1,28 @@
+on:
+  push:
+    branches:
+      - docker-test
+      - master
+    paths-ignore: 
+      - .github/workflows/**
+  release:
+    types:
+      - published
+
+jobs:
+  buildpush:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Get branch name
+      shell: bash
+      run: echo "branchName=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+    
+    - name: Set env
+      if: env.branchName == 'master'
+      run: echo "envname=staging" >> $GITHUB_ENV
+    
+    - name: Set env(branch Name)
+      if: env.branchName != 'master'
+      run: echo "envname=${branchName}" >> $GITHUB_ENV | echo "branchName=${envname}" >> $GITHUB_ENV
