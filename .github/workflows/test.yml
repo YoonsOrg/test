@@ -14,16 +14,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
+    - name: Get branch name
+      shell: bash
+      run: echo "branchName=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+
+    - name: Set tag(sha)
+      if: github.event_name != 'release'
+      run: echo "tagname=${{ github.sha }}" >> $GITHUB_ENV
+
+    - name: Set tag(release)
+      if: github.event_name == 'release'
+      run: echo "tagname=${branchName}" >> $GITHUB_ENV
     
     - name: trigger by released
       if: github.event_name == 'release'
       run: echo "envname=production" >> $GITHUB_ENV
 
-    - name: Get branch name
-      if: github.event_name != 'release'
-      shell: bash
-      run: echo "branchName=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
-    
     - name: Set env
       if: env.branchName == 'main' && github.event_name != 'release'
       run: echo "envname=production" >> $GITHUB_ENV
