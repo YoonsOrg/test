@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "envname=staging" >> $GITHUB_ENV
+echo "envname=prod" >> $GITHUB_ENV
 
 if [ $1 = "release"]; then
   echo "tagname=${ branchName }" >> $GITHUB_ENV
