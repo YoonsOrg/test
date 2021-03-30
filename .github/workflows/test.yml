@@ -20,7 +20,7 @@ jobs:
 
     - name: Get tag version
       shell: bash
-      run: echo "tagName=$(echo ${GITHUB_REF#refs/tags/})" >> $GITHUB_ENV
+      run: echo "tagName=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
 
     - name: Set env
       run: |
@@ -28,6 +28,6 @@ jobs:
         ./.github/workflows/${{ env.branchName }}.sh ${{ github.event_name }} $GITHUB_REF ${{ github.sha }}
 
     - name: Set tag(sha)
-      run: echo ${{ secrets.TEST_ }} 
+      run: echo ${{ env.secret }} 
       env:
         secret: $${{ env.secretA }}secrets.TEST_${{ env.secrets }}${{ env.secretB }}
