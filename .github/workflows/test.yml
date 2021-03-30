@@ -22,16 +22,16 @@ jobs:
       if: github.event_name == 'release'
       shell: bash
       run: echo "branchName=production" >> $GITHUB_ENV
-    
-    - name: Get branch name
-      if: github.event_name != 'release'
+
+    - name: Get tag version
+      if: github.event_name == 'release'
       shell: bash
-      run: echo "branchName=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+      run: echo "tagName=$(echo ${GITHUB_REF#refs/tags/})" >> $GITHUB_ENV
     
-    - name: Set env
-      run: |
-        chmod +x .github/workflows/${{ env.branchName }}.sh 
-        ./.github/workflows/${{ env.branchName }}.sh ${{ github.event_name }} $GITHUB_REF ${{ github.sha }}
+    #- name: Set env
+      #run: |
+        #chmod +x .github/workflows/${{ env.branchName }}.sh 
+        #./.github/workflows/${{ env.branchName }}.sh ${{ github.event_name }} $GITHUB_REF ${{ github.sha }}
 
     - name: Set tag(sha)
       run: echo "Hellow" 
