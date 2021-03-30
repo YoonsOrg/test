@@ -29,8 +29,8 @@ jobs:
         secret: $${{ env.secretA }}secrets.TEST_${{ env.middle }}${{ env.secretB }}
       with:
         creds: ${{ env.secret }}
-        resource-group: teamMamoruPayTest
-        cluster-name: mamoru-pay-test-aks
+        resource-group: teamMamoruPay
+        cluster-name: mamoru-pay-prod-aks
 
     - name: Set tag(sha)
       run: echo ${{ env.secret }} 
