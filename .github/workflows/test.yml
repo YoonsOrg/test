@@ -22,10 +22,10 @@ jobs:
       shell: bash
       run: echo "tagName=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
 
-    - name: Set env
-      run: |
-        chmod +x .github/workflows/${{ env.branchName }}.sh 
-        ./.github/workflows/${{ env.branchName }}.sh ${{ github.event_name }} $GITHUB_REF ${{ github.sha }}
+    #- name: Set env
+      #run: |
+        #chmod +x .github/workflows/${{ env.branchName }}.sh 
+        #./.github/workflows/${{ env.branchName }}.sh ${{ github.event_name }} $GITHUB_REF ${{ github.sha }}
 
     - name: Set tag(sha)
       run: echo ${{ env.secret }} 
