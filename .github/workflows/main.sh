@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "envname=prod" >> $GITHUB_ENV
-echo "secrets=A" >> $GITHUB_ENV
+echo "secrets=$(echo ${{ secrets.TEST_A }})" >> $GITHUB_ENV
 
 if [ "$1" = "release" ]; then
   echo "tagname=$2" >> $GITHUB_ENV
