@@ -23,10 +23,14 @@ jobs:
       shell: bash
       run: echo "tagName=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
 
-    #- name: Set env
-      #run: |
-        #chmod +x .github/workflows/${{ env.branchName }}.sh 
-        #./.github/workflows/${{ env.branchName }}.sh ${{ github.event_name }} $GITHUB_REF ${{ github.sha }}
+    - name: Azure Kubernetes set context
+      uses: Azure/aks-set-context@v1
+      env:
+        secret: $${{ env.secretA }}secrets.TEST_${{ env.middle }}${{ env.secretB }}
+      with:
+        creds: ${{ env.secret }}
+        resource-group: teamMamoruPayTest
+        cluster-name: mamoru-pay-test-aks
 
     - name: Set tag(sha)
       run: echo ${{ env.secret }} 
