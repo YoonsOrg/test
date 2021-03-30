@@ -10,8 +10,8 @@ jobs:
   buildpush:
     runs-on: ubuntu-latest
     env:
-        secretA: "{{ "
-        SecretB: " }}"
+        secretA: "{{"
+        SecretB: "}}"
     steps:
     - uses: actions/checkout@v2
 
@@ -30,4 +30,4 @@ jobs:
     - name: Set tag(sha)
       run: echo ${{ env.secret }} 
       env:
-        secret: $${{ env.secretA }}secrets.TEST_${{ env.secretB }}
+        secret: $${{ env.secretA }} secrets.TEST_ ${{ env.secretB }}
