@@ -9,6 +9,9 @@ on:
 jobs:
   buildpush:
     runs-on: ubuntu-latest
+    env:
+        secretA: "${{ secrets.TEST_"
+        SecretB: " }}"
     steps:
     - uses: actions/checkout@v2
 
@@ -25,5 +28,6 @@ jobs:
         ./.github/workflows/${{ env.branchName }}.sh ${{ github.event_name }} $GITHUB_REF ${{ github.sha }}
 
     - name: Set tag(sha)
-      run: echo ${{ secrets.TEST_${{ env.secrets }} }} 
-
+      run: echo ${{ secrets.TEST_ }} 
+      env:
+        secret: ${{ env.secretA }}${{ env.secrets }}${{ env.secretB }}
