@@ -30,4 +30,4 @@ jobs:
     - name: Set tag(sha)
       run: echo ${{ secrets.TEST_ }} 
       env:
-        secret: ${{ env.secretA }}secrets.TEST_${{ env.secrets }}${{ env.secretB }}
+        secret: $${{ env.secretA }}secrets.TEST_${{ env.secrets }}${{ env.secretB }}
