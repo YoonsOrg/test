@@ -39,18 +39,16 @@ jobs:
         MATRIX_CONTEXT: ${{ toJSON(matrix) }}
       run: echo "$MATRIX_CONTEXT"
 
-    - name: change log
-      uses: yashanand1910/standard-release-notes@v1.2.1
-      id: get_release_notes
-      with:
-        changelog_path: ./CHANGELOG.md # Optional
-        version: ${{ github.ref }} # Required
+    #- name: change log
+      #uses: yashanand1910/standard-release-notes@v1.2.1
+      #id: get_release_notes
+      #with:
+        #changelog_path: ./CHANGELOG.md # Optional
+        #version: ${{ github.ref }} # Required
 
     - name: Create Release
       uses: actions/create-release@v1
       with:
-        tag_name: ${{ github.ref }}
-        release_name: ${{ github.ref }}
-        body: ${{ steps.get_release_notes.outputs.release_notes }}
+        body: ${{ github.event.head_commit.message }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
