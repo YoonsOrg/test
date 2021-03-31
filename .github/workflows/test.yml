@@ -10,9 +10,9 @@ jobs:
   buildpush:
     runs-on: ubuntu-latest
     env:
-      A: ${{ TEST_A }}
-      B: ${{ TEST_B }}
-      C: ${{ TEST_C }}
+      A: ${{ secrets.TEST_A }}
+      B: ${{ secrets.TEST_B }}
+      C: ${{ secrets.TEST_C }}
     steps:
     - uses: actions/checkout@v2
 
