@@ -39,13 +39,9 @@ jobs:
         MATRIX_CONTEXT: ${{ toJSON(matrix) }}
       run: echo "$MATRIX_CONTEXT"
 
-    - name: Build Changelog
-      id: github_release
-      uses: mikepenz/release-changelog-builder-action@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        commitMode: true
+    – name: Extract release notes
+      id: extract_release_notes
+      uses: ffurrer2/extract-release-notes@v1
 
     - name: Create Release
       uses: actions/create-release@v1
