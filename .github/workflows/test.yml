@@ -18,8 +18,8 @@ jobs:
 
     - name: Set env
       run: |
-        chmod +x .github/workflows/${{ github.base_ref }}.sh
-        ./.github/workflows/${{ github.base_ref }}.sh
+        chmod +x .github/workflows/main.sh
+        ./.github/workflows/main.sh
 
     - name: Azure Kubernetes set context
       uses: Azure/aks-set-context@v1
