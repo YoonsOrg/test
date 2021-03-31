@@ -22,13 +22,6 @@ jobs:
         #chmod +x .github/workflows/main.sh
         #./.github/workflows/main.sh
 
-    - name: Azure Kubernetes set context
-      uses: Azure/aks-set-context@v1
-      with:
-        creds: ${{ secrets.TEST }}
-        resource-group: teamMamoruPay
-        cluster-name: mamoru-pay-prod-aks
-
     - name: create release
       uses: ncipollo/release-action@v1
       with:
