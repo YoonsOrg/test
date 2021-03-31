@@ -38,6 +38,7 @@ jobs:
       env:
         MATRIX_CONTEXT: ${{ toJSON(matrix) }}
       run: echo "$MATRIX_CONTEXT"
+
     - name: Build Changelog
       id: github_release
       uses: mikepenz/release-changelog-builder-action@v1
