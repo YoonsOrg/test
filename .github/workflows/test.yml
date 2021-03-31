@@ -14,8 +14,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Show base branch Name
-      run: echo ${{ github.event.issue.body }}
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJSON(github) }}
+      run: echo "$GITHUB_CONTEXT"
 
     #- name: Set env
       #run: |
