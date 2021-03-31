@@ -47,8 +47,9 @@ jobs:
         #version: ${{ github.ref }} # Required
 
     - name: Create Release
-      uses: actions/create-release@v1
-      with:
-        body: ${{ github.event.head_commit.message }}
+      id: create_release
+      uses: zendesk/action-create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        body: ${{ github.event.head_commit.message }}
