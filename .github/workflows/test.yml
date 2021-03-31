@@ -39,16 +39,10 @@ jobs:
         MATRIX_CONTEXT: ${{ toJSON(matrix) }}
       run: echo "$MATRIX_CONTEXT"
 
-    - name: get commit message
-      run: |
-         echo "commitmsg=$(git log --format=%B -n 1 ${{ github.event.after }})" >> $GITHUB_ENV
-    - name: show commit message
-      run : echo ${{ env.commitmsg }}
-
     - name: Create Release
       id: create_release
       uses: zendesk/action-create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        body: ${{ env.commitmsg }}
+        body: ${{ github.event.head_commit.message }}
