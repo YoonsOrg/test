@@ -9,24 +9,22 @@ on:
 jobs:
   buildpush:
     runs-on: ubuntu-latest
-    env:
-      A: ${{ secrets.TEST_A }}
-      B: ${{ secrets.TEST_B }}
-      C: ${{ secrets.TEST_C }}
+    environment:
+        name: A
     steps:
     - uses: actions/checkout@v2
 
     - name: Show base branch Name
       run: echo ${{ github.base_ref }}
 
-    - name: Set env
-      run: |
-        chmod +x .github/workflows/main.sh
-        ./.github/workflows/main.sh
+    #- name: Set env
+      #run: |
+        #chmod +x .github/workflows/main.sh
+        #./.github/workflows/main.sh
 
     - name: Azure Kubernetes set context
       uses: Azure/aks-set-context@v1
       with:
-        creds: ${{ env.secret }}
+        creds: ${{ secrets.TEST }}
         resource-group: teamMamoruPay
         cluster-name: mamoru-pay-prod-aks
