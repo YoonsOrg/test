@@ -10,7 +10,7 @@ jobs:
   buildpush:
     runs-on: ubuntu-latest
     environment:
-        name: B
+        name: A
     steps:
     - uses: actions/checkout@v2
 
