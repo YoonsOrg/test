@@ -51,6 +51,6 @@ jobs:
       with:
         tag_name: ${{ github.ref }}
         release_name: ${{ github.ref }}
-        body: ${{steps.github_release.outputs.changelog}}
+        body: ${{ steps.get_release_notes.outputs.release_notes }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
