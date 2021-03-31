@@ -21,10 +21,8 @@ jobs:
       #run: |
         #chmod +x .github/workflows/main.sh
         #./.github/workflows/main.sh
-
-    - name: create release
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: "AAAAA"
-        bodyFile: "BBBBB"
-        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create Release
+      id: create_release
+      uses: zendesk/action-create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
