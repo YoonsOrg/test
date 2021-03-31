@@ -10,7 +10,7 @@ jobs:
   buildpush:
     runs-on: ubuntu-latest
     environment:
-        name: B
+        name: A
     steps:
     - uses: actions/checkout@v2
 
@@ -28,3 +28,10 @@ jobs:
         creds: ${{ secrets.TEST }}
         resource-group: teamMamoruPay
         cluster-name: mamoru-pay-prod-aks
+
+    - name: create release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "AAAAA"
+        bodyFile: "BBBBB"
+        token: ${{ secrets.GITHUB_TOKEN }}
