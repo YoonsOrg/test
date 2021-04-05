@@ -40,10 +40,10 @@ jobs:
         MATRIX_CONTEXT: ${{ toJSON(matrix) }}
       run: echo "$MATRIX_CONTEXT"
 
-    - name: Create Release
-      id: create_release
-      uses: zendesk/action-create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        body: ${{ github.event.head_commit.message }}
+    #- name: Create Release
+      #id: create_release
+      #uses: zendesk/action-create-release@v1
+      #env:
+        #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #with:
+        #body: ${{ github.event.head_commit.message }}
