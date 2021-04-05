@@ -1,6 +1,7 @@
 on:
   push:
     branches:
+      - aaaaaaaa
     paths-ignore: 
       - .github/workflows/**
   release:
