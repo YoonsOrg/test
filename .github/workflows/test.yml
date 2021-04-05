@@ -1,12 +1,9 @@
 on:
   push:
     branches:
-      - aaaaaaaa
+      - aaaaaaaabbb
     paths-ignore: 
       - .github/workflows/**
-  release:
-     type:
-      - published
 jobs:
   buildpush:
     runs-on: ubuntu-latest
